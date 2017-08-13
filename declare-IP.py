@@ -28,6 +28,11 @@ innerIP  = get_ip_address("eth0")
 text = "Raspberry"
 desp = "{0}\r\n\r\nOutter IP: {1}\r\n\r\nInner IP: {2}".format(time_now, outterIP, innerIP)
 
-urllib.urlopen("http://sc.ftqq.com/SCU4050Tc966f97aa635c7055d6c8e12444d518c5834fbfd9eaa7.send?text={0}&desp={1}".format(text, desp))
+# use ftqq
+# urllib.urlopen("http://sc.ftqq.com/SCU4050Tc966f97aa635c7055d6c8e12444d518c5834fbfd9eaa7.send?text={0}&desp={1}".format(text, desp))
+
+# use wechat
+urllib.urlopen("http://zhanglintc.work:8000/send?text={0}\n\nRaspberry Pi:\nOutter IP: {1}\nInner IP: {2}".format(time_now, outterIP, innerIP))
+
 
 
