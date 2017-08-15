@@ -6,6 +6,7 @@ import urllib
 import fcntl
 import struct
 import time
+import sys
   
 def get_ip_address(ifname):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -15,9 +16,11 @@ def get_ip_address(ifname):
         struct.pack('256s', ifname[:15])
     )[20:24])
 
-print "sleeping"
+sleep_time = int(sys.argv[1]) if len(sys.argv) > 1 else 0 
 
-time.sleep(10)
+if sleep_time:
+    print "sleeping"
+    time.sleep(sleep_time)
 
 print "sending"
 
