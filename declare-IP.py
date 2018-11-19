@@ -7,7 +7,7 @@ import fcntl
 import struct
 import time
 import sys
-  
+
 def get_ip_address(ifname):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     return socket.inet_ntoa(fcntl.ioctl(
@@ -16,7 +16,7 @@ def get_ip_address(ifname):
         struct.pack('256s', ifname[:15])
     )[20:24])
 
-sleep_time = int(sys.argv[1]) if len(sys.argv) > 1 else 0 
+sleep_time = int(sys.argv[1]) if len(sys.argv) > 1 else 0
 
 if sleep_time:
     print "sleeping"
