@@ -6,7 +6,7 @@ import urllib
 import fcntl
 import struct
 import time
-import sys
+import sys, os
 
 def get_ip_address(ifname):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -25,7 +25,8 @@ if sleep_time:
 print "sending"
 
 time_now = time.ctime()
-outterIP = urllib.urlopen("http://zhanglintc.work:3322/").read()
+# outterIP = urllib.urlopen("http://zhanglintc.work:3322/").read()
+outterIP = os.popen('curl -s ip.sb').read()
 innerIP  = get_ip_address("eth0")
 
 text = "Raspberry"
