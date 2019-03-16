@@ -26,17 +26,20 @@ print "sending"
 
 time_now = time.ctime()
 # outterIP = urllib.urlopen("http://zhanglintc.work:3322/").read()
-outterIP = os.popen('curl -s ip.sb').read()
-innerIP  = get_ip_address("eth0")
+outterIP = os.popen('curl -s ip.sb').read().replace("\n", "")
+try:
+    innerIP = get_ip_address("eth0")
+except:
+    innerIP = get_ip_address("wlan0")
 
 text = "Raspberry"
-desp = "{0}\r\n\r\nOutter IP: {1}\r\n\r\nInner IP: {2}".format(time_now, outterIP, innerIP)
+desp = "{0}\r\n\r\nPublic: {1}\r\n\r\nPrivate: {2}".format(time_now, outterIP, innerIP)
 
 # use ftqq
 # urllib.urlopen("http://sc.ftqq.com/SCU4050Tc966f97aa635c7055d6c8e12444d518c5834fbfd9eaa7.send?text={0}&desp={1}".format(text, desp))
 
 # use wechat
-urllib.urlopen("http://zhanglintc.work:8000/send?text=Raspberry Pi:\nOutter IP: {0}\nInner IP: {1}".format(outterIP, innerIP))
+urllib.urlopen("http://zhanglintc.work:8000/send?text=Raspberry Pi:\nPublic: {0}\nPrivate: {1}".format(outterIP, innerIP))
 
 
 
